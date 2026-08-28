@@ -18,8 +18,6 @@ type WallpaperRow = {
   aspect_ratio: number | null;
   premium: boolean | null;
   downloads: number | null;
-  downloads_seed: number | null;
-  downloads_label: string | null;
 };
 
 type CategoryRow = {
@@ -39,8 +37,6 @@ function toWallpaper(row: WallpaperRow): Wallpaper {
     aspectRatio: Number(row.aspect_ratio) || 1.777,
     premium: row.premium ?? false,
     downloads: row.downloads ?? 0,
-    downloadsSeed: row.downloads_seed ?? 0,
-    downloadsLabel: row.downloads_label ?? null,
   };
 }
 
@@ -83,7 +79,7 @@ export async function fetchWallpapers(options: {
   let query = supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads'
     )
     .eq('is_active', true)
     .order('priority', { ascending: false })
@@ -103,7 +99,7 @@ export async function fetchTrending(limit = 12): Promise<Wallpaper[]> {
   const { data: pinnedData, error: pinnedError } = await supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label,trending_priority'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,trending_priority'
     )
     .eq('is_active', true)
     .not('trending_priority', 'is', null)
@@ -118,7 +114,7 @@ export async function fetchTrending(limit = 12): Promise<Wallpaper[]> {
   const { data, error } = await supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads'
     )
     .eq('is_active', true)
     .order('downloads', { ascending: false })
@@ -137,7 +133,7 @@ export async function fetchHero(limit = 6): Promise<Wallpaper[]> {
   const { data: pinnedData, error: pinnedError } = await supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label,hero_rank'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,hero_rank'
     )
     .eq('is_active', true)
     .not('hero_rank', 'is', null)
@@ -151,7 +147,7 @@ export async function fetchHero(limit = 6): Promise<Wallpaper[]> {
   const { data, error } = await supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads'
     )
     .eq('is_active', true)
     .order('priority', { ascending: false })
@@ -166,7 +162,7 @@ export async function fetchWallpaperById(id: string): Promise<Wallpaper | null> 
   const { data, error } = await supabase
     .from('wallpapers')
     .select(
-      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads,downloads_seed,downloads_label'
+      'id,title,thumb_url,full_url,category_slug,aspect_ratio,premium,downloads'
     )
     .eq('id', id)
     .eq('is_active', true)
@@ -180,18 +176,4 @@ export async function fetchWallpaperById(id: string): Promise<Wallpaper | null> 
 export async function recordDownload(id: string): Promise<void> {
   const { error } = await supabase.rpc('increment_downloads', { wallpaper_id: id });
   if (error) console.warn('[recordDownload]', error.message);
-}
-
-export function displayCount(
-  w: Pick<Wallpaper, 'downloads' | 'downloadsSeed' | 'downloadsLabel'>
-): string {
-  if (w.downloadsLabel && w.downloadsLabel.trim()) return w.downloadsLabel.trim();
-  // Seed (a head start set at upload) + real downloads. Grows with every download.
-  const n = (w.downloadsSeed ?? 0) + w.downloads;
-  if (n <= 0) return 'New';
-  if (n >= 1000) {
-    const k = Math.floor(n / 100) / 10;
-    return `${Number.isInteger(k) ? k : k.toFixed(1)}K+`;
-  }
-  return String(n);
 }

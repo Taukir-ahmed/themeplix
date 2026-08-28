@@ -8,12 +8,7 @@ import { useGetApp } from '../components/getAppContext';
 import { useAsync } from '../hooks/useAsync';
 import { downloadWebPreview } from '../lib/download';
 import { playUrl } from '../lib/config';
-import {
-  displayCount,
-  fetchWallpaperById,
-  fetchWallpapers,
-  recordDownload,
-} from '../lib/wallpapers';
+import { fetchWallpaperById, fetchWallpapers, recordDownload } from '../lib/wallpapers';
 
 type DownloadState = 'idle' | 'working' | 'done' | 'error';
 
@@ -116,22 +111,14 @@ export default function WallpaperDetail() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             {catName}
           </p>
-          <div className="mt-2 flex items-center gap-3 text-sm text-muted">
-            <span className="flex items-center gap-1">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                <path d="M12 3v12M7 11l5 5 5-5M5 21h14" />
+          {wp.premium && (
+            <div className="mt-2 flex items-center gap-1 text-sm text-gold">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1l3 6 6 .9-4.5 4.3L17 19l-5-2.7L7 19l1.5-6.8L4 7.9 10 7z" />
               </svg>
-              {displayCount(wp)} downloads
-            </span>
-            {wp.premium && (
-              <span className="flex items-center gap-1 text-gold">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 1l3 6 6 .9-4.5 4.3L17 19l-5-2.7L7 19l1.5-6.8L4 7.9 10 7z" />
-                </svg>
-                Premium
-              </span>
-            )}
-          </div>
+              Premium
+            </div>
+          )}
 
           <div className="mt-6 space-y-3">
             <button
