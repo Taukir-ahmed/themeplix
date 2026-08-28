@@ -21,7 +21,8 @@ export default function Terms() {
       >
         <Section title="Who we are">
           Themeplix ("Themeplix", "we", "us") is a wallpaper service operated by an
-          individual seller based in India: <strong>Taukir Ahmad</strong>. Contact:{' '}
+          individual seller based in Patna, Bihar, India:{' '}
+          <strong>Md Taukir Ahmed</strong>. Contact:{' '}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </Section>
 
@@ -115,9 +116,9 @@ export default function Terms() {
         </Section>
 
         <Section title="Governing law">
-          These terms are governed by the laws of India. Courts at Bengaluru,
-          Karnataka have exclusive jurisdiction, subject to any consumer-protection
-          rights you have where you live.
+          These terms are governed by the laws of India. Courts at Patna, Bihar
+          have exclusive jurisdiction, subject to any consumer-protection rights
+          you have where you live.
         </Section>
 
         <Section title="Contact">

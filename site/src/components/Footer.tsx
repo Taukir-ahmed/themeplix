@@ -40,6 +40,9 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Themeplix. All wallpapers are original AI compositions.</p>
           <p>{SUPPORT_EMAIL}</p>
         </div>
+        <p className="mt-2 text-xs text-faint">
+          Operated by Md Taukir Ahmed, Patna, Bihar, India.
+        </p>
       </div>
     </footer>
   );
