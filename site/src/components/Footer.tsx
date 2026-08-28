@@ -26,6 +26,8 @@ export default function Footer() {
               Instagram
             </a>
             <Link to="/privacy" className="text-muted hover:text-text">Privacy</Link>
+            <Link to="/terms" className="text-muted hover:text-text">Terms</Link>
+            <Link to="/refund" className="text-muted hover:text-text">Refunds</Link>
             <Link to="/delete-data" className="text-muted hover:text-text">Delete my data</Link>
             <a href={`mailto:${SUPPORT_EMAIL}`} className="text-muted hover:text-text">Support</a>
             <a href={playUrl('web_footer')} target="_blank" rel="noreferrer" className="text-muted hover:text-text">

@@ -11,6 +11,8 @@ const Category = lazy(() => import('./pages/Category'));
 const WallpaperDetail = lazy(() => import('./pages/WallpaperDetail'));
 const Pro = lazy(() => import('./pages/Pro'));
 const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Refund = lazy(() => import('./pages/Refund'));
 const DeleteData = lazy(() => import('./pages/DeleteData'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -34,6 +36,8 @@ export default function App() {
             <Route path="wallpaper/:id" element={<WallpaperAlias />} />
             <Route path="pro" element={<Pro />} />
             <Route path="privacy" element={<Privacy />} />
+            <Route path="terms" element={<Terms />} />
+            <Route path="refund" element={<Refund />} />
             <Route path="delete-data" element={<DeleteData />} />
             <Route path="*" element={<NotFound />} />
           </Route>
