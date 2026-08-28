@@ -1,0 +1,11 @@
+# build + deps (also covered by site/.gitignore)
+node_modules/
+dist/
+*.tsbuildinfo
+
+# never commit secrets — set these in the Cloudflare dashboard instead
+.env
+.env*.local
+.dev.vars
+
+.DS_Store
