@@ -9,7 +9,10 @@ export interface Wallpaper {
   /** height / width. Drives the masonry grid before images load. */
   aspectRatio: number;
   premium: boolean;
+  /** Real download counter. */
   downloads: number;
+  /** Head start on the displayed count; UI shows downloadsSeed + downloads. */
+  downloadsSeed?: number;
   downloadsLabel?: string | null;
 }
 
