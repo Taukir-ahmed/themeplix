@@ -47,14 +47,14 @@ export const PRO_PLANS: ProPlan[] = [
     cadence: 'per year',
     note: 'Just ₹17/mo, billed yearly',
     badge: 'SAVE 66%',
+    highlight: true,
   },
   {
     id: 'lifetime',
     name: 'Lifetime',
     price: '₹799',
     cadence: 'one payment',
-    note: 'Pay once — yours forever',
+    note: 'Pay once, yours forever',
     badge: 'BEST VALUE',
-    highlight: true,
   },
 ];
