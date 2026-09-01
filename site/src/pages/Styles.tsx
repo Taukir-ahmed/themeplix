@@ -38,7 +38,7 @@ export default function Styles() {
       ) : !products.data || products.data.length === 0 ? (
         <StateView title="Nothing here yet" body="Picks are on the way." />
       ) : (
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {products.data.map((p) => (
             <a
               key={p.id}
@@ -47,7 +47,7 @@ export default function Styles() {
               rel="sponsored nofollow noopener noreferrer"
               onClick={() => recordAffiliateClick(p.id)}
               aria-label="Shop this item"
-              className="group block aspect-square overflow-hidden rounded-xl border border-line bg-surface-2 transition hover:border-line-strong active:scale-[0.98]"
+              className="group block aspect-[4/5] overflow-hidden rounded-xl border border-line bg-surface-2 transition hover:border-line-strong active:scale-[0.98]"
             >
               <img
                 src={p.imageUrl}
