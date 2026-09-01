@@ -4,6 +4,9 @@ import Layout from './components/Layout';
 import Spinner from './components/Spinner';
 import { GetAppProvider } from './components/GetAppModal';
 import Home from './pages/Home';
+// The affiliate "Shop" page — kept in the main bundle (not lazy) so it opens
+// instantly in the Instagram in-app browser, which is the traffic it serves.
+import Styles from './pages/Styles';
 
 const Explore = lazy(() => import('./pages/Explore'));
 const Categories = lazy(() => import('./pages/Categories'));
@@ -34,6 +37,7 @@ export default function App() {
             <Route path="category/:slug" element={<Category />} />
             <Route path="w/:id" element={<WallpaperDetail />} />
             <Route path="wallpaper/:id" element={<WallpaperAlias />} />
+            <Route path="styles" element={<Styles />} />
             <Route path="pro" element={<Pro />} />
             <Route path="privacy" element={<Privacy />} />
             <Route path="terms" element={<Terms />} />

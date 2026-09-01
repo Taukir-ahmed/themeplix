@@ -22,6 +22,7 @@ export default function Footer() {
             <Link to="/explore" className="text-muted hover:text-text">Explore</Link>
             <Link to="/categories" className="text-muted hover:text-text">Categories</Link>
             <Link to="/pro" className="text-muted hover:text-text">Themeplix Pro</Link>
+            <Link to="/styles" className="text-muted hover:text-text">Shop styles</Link>
             <a href={instagram_url} target="_blank" rel="noreferrer" className="text-muted hover:text-text">
               Instagram
             </a>
